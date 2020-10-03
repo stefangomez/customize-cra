@@ -147,7 +147,9 @@ export const addLessLoader = (loaderOptions = {}, customCssModules = {}) => conf
   // https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/config/webpack.config.js#L93
   const getStyleLoaders = (cssOptions, preProcessor) => {
     const loaders = [
-      isEnvDevelopment && require.resolve("style-loader"),
+      isEnvDevelopment && {
+        loader: require.resolve('style-loader'),
+      },
       isEnvProduction && {
         loader: MiniCssExtractPlugin.loader,
         options: shouldUseRelativeAssetPaths ? { publicPath: "../../" } : {}
